@@ -1,1 +1,1 @@
-import '@src/home';
+import "../src/home.jsx";
