@@ -99,6 +99,7 @@ const Feed = (props) => {
                 type="text"
                 className="tweet-input"
                 placeholder="What's happening?"
+                maxlength="140"
               />
               <hr />
               <div className="row">
