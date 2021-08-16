@@ -1,0 +1,67 @@
+.wrapper {
+  box-shadow: 0 6px 20px rgb(0 0 0 / 20%) !important;
+  border-radius: 0.625rem !important;
+  background-color: #f5f5f5 !important;
+  min-height: 80vh;
+  max-height: 90vh;
+}
+.wrapper-trends {
+  border-radius: 0.625rem !important;
+  background-color: rgb(247, 249, 249) !important;
+}
+
+.list-group-item {
+  border: 0em;
+  border-radius: 2rem !important;
+}
+.trends {
+  border-radius: 0rem !important;
+  border: none !important;
+  background-color: rgb(247, 249, 249) !important;
+}
+.trends:hover {
+  background-color: #f5f5f5 !important;
+}
+.btn-tweet {
+  background-color: #1da1fa;
+  border-color: #1da1fa;
+  border-radius: 2rem;
+}
+
+#stream-search {
+  background-color: #f5f5f5;
+  border-radius: 2rem;
+}
+
+.trends {
+  background-color: #f5f5f5;
+}
+.twitter-logo {
+  color: #1da1fa;
+}
+.twitter-link {
+  color: #1da1fa;
+}
+.input-bg {
+  background-color: rgb(247, 249, 249) !important;
+}
+
+.tweet-input {
+  min-height: 10vh;
+  min-width: 34vw;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: none;
+  font-size: 18px;
+}
+
+.tweet-row {
+  min-height: 20vh;
+}
+.feed-links {
+  text-decoration: none;
+}
+.feed-links:hover {
+  text-decoration: underline;
+}
