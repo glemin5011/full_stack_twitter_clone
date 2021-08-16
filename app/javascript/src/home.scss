@@ -5,8 +5,28 @@
   min-height: 100vh;
 }
 .bg-image-twitter {
-  background-image: url("../images/Vector.png");
+  background-image: url("../images/bigger_twitter.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position-x: right;
+}
+
+.btn-signup {
+  border-radius: 2rem;
+  background-color: #1da1fa;
+  border-color: #1da1fa;
+}
+.btn-login {
+  border-radius: 2rem;
+  border-color: #1da1fa;
+  color: #1da1fa;
+}
+.btn-login:hover {
+  background-color: #1da1fa;
+}
+.twitter-logo {
+  color: #1da1fa;
+}
+.twitter-features {
+  color: white;
 }
