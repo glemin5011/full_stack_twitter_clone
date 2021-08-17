@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import {
   Twitter,
@@ -15,10 +15,24 @@ import {
   Image,
   Lock,
 } from "react-bootstrap-icons";
+import { safeCredentials, handleErrors } from "./utils/fetchHelper";
 
 import "./feed.scss";
 
 const Feed = (props) => {
+  const [tweets, setTweets] = useState("");
+
+  const getTweets = fetch(
+    `api/tweets`,
+    safeCredentials({
+      method: "GET",
+    })
+  )
+    .then(handleErrors)
+    .then((res) => {
+      console.log(res);
+    });
+
   return (
     <div className="container">
       <div className="row mt-4">
@@ -51,19 +65,19 @@ const Feed = (props) => {
               <Envelope size={25} className="me-3 mb-1" />
               Messages
             </a>
-            <a href="#" class="list-group-item list-group-item-action">
+            <a href="#" className="list-group-item list-group-item-action">
               <Bookmark size={25} className="me-3 mb-1" />
               Bookmarks
             </a>
-            <a href="#" class="list-group-item list-group-item-action">
+            <a href="#" className="list-group-item list-group-item-action">
               <List size={25} className="me-3 mb-1" />
               Lists
             </a>
-            <a href="#" class="list-group-item list-group-item-action">
+            <a href="#" className="list-group-item list-group-item-action">
               <Person size={25} className="me-3 mb-1" />
               Profile
             </a>
-            <a href="#" class="list-group-item list-group-item-action">
+            <a href="#" className="list-group-item list-group-item-action">
               <Lock size={25} className="me-3 mb-1" />
               Log out
             </a>
@@ -99,7 +113,7 @@ const Feed = (props) => {
                 type="text"
                 className="tweet-input"
                 placeholder="What's happening?"
-                maxlength="140"
+                maxLength="140"
               />
               <hr />
               <div className="row">

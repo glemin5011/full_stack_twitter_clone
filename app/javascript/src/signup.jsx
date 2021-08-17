@@ -2,8 +2,26 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./signup.scss";
 import { Twitter } from "react-bootstrap-icons";
+import { safeCredentials, handleErrors } from "./utils/fetchHelper";
 
 const SignUp = () => {
+  const createUser = fetch(
+    `api/users`,
+    safeCredentials({
+      method: "POST",
+      body: JSON.stringify({
+        users: {
+          email: "hello@world.com",
+          password: "abc123",
+        },
+      }),
+    })
+  )
+    .then(handleErrors)
+    .then((res) => {
+      console.log(res);
+    });
+
   return (
     <div class="container-fluid text-center form-signin">
       <form>
@@ -46,7 +64,11 @@ const SignUp = () => {
           <label for="floatingPassword">Password</label>
         </div>
 
-        <button class="w-100 btn btn-lg btn-primary btn-signin" type="submit">
+        <button
+          class="w-100 btn btn-lg btn-primary btn-signin"
+          type="submit"
+          onClick={createUser}
+        >
           Sign up
         </button>
         <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
