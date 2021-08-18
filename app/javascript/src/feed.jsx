@@ -28,8 +28,7 @@ const Feed = (props) => {
   const [tweetLoading, setTweetLoading] = useState(true);
   const [username, setUsername] = useState("");
   const [tweetBody, setTweetBody] = useState("");
-  const [tweetId, setTweetId] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
 
   const getTweets = () => {
     fetch(
@@ -71,6 +70,7 @@ const Feed = (props) => {
         body: JSON.stringify({
           tweet: {
             message: tweetBody,
+            image: image,
           },
         }),
       })
@@ -211,7 +211,7 @@ const Feed = (props) => {
                     </p>
                     <input
                       type="text"
-                      className="tweet-input"
+                      className="tweet-input text-wrap"
                       placeholder="What's happening?"
                       maxLength="140"
                       onChange={(event) => setTweetBody(event.target.value)}
@@ -220,9 +220,12 @@ const Feed = (props) => {
                     <hr />
                     <div className="row">
                       <div className="col-10">
-                        <a href="" className="twitter-link">
-                          <Image size={25} className="ms-2 my-3" />
-                        </a>
+                        <input
+                          className="mt-2 form-control form-control-sm"
+                          type="file"
+                          accept={"image/*"}
+                          onChange={(e) => setImage(e.target.files[0])}
+                        ></input>
                       </div>
                       <div className="col-2">
                         <button
@@ -281,6 +284,7 @@ const Feed = (props) => {
                             </div>
                           </div>
                         </div>
+                        {tweet.image !== null ? <p>{tweet.image}</p> : null}
                         <p className="pt-2">{tweet.message}</p>
                       </div>
                     </div>

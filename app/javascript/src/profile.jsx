@@ -198,11 +198,8 @@ const Profile = (props) => {
                         @{profileName}
                       </a>
                     </p>
-                    <p>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Quam omnis similique natus, id maxime veniam, quasi,
-                      debitis in commodi dicta enim nisi rem perferendis.
-                      Facere, laboriosam iure? Perferendis, consectetur labore.
+                    <p className="text-muted">
+                      This is a profile description for a new user...
                     </p>
                   </div>
                 </div>
