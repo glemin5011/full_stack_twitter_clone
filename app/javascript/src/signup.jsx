@@ -82,7 +82,7 @@ const SignUp = () => {
   return (
     <div className="container-fluid text-center form-signin">
       <form onSubmit={createUser}>
-        <a href="http://localhost:3000/">
+        <a href="/">
           <Twitter className="mx-auto mb-4 twitter-logo" size={60} />
         </a>
         <h1 className="h3 mb-3 fw-normal">Welcome to Twitter!</h1>

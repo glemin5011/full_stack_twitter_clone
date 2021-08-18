@@ -54,13 +54,13 @@ const SignIn = () => {
   return (
     <div className="container-fluid text-center form-signin">
       <form onSubmit={logInUser}>
-        <a href="http://localhost:3000/">
+        <a href="/">
           <Twitter className="mx-auto mb-4 twitter-logo" size={60} />
         </a>
         <h1 className="h3 mb-3 fw-normal">Please sign in.</h1>
         <p>
           Don't have an account yet?{" "}
-          <a href="http://localhost:3000/signup" className="twitter-link">
+          <a href="/signup" className="twitter-link">
             Sign up.
           </a>
         </p>

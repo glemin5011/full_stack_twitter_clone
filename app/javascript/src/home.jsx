@@ -32,7 +32,7 @@ const Home = (props) => {
               <a
                 href="/signin"
                 target="_self"
-                class="btn btn-outline-primary btn-login"
+                className="btn btn-outline-primary btn-login"
               >
                 Log in
               </a>
