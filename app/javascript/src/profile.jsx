@@ -15,6 +15,8 @@ import {
   Image,
   Lock,
   X,
+  Arrow90degLeft,
+  ChevronLeft,
 } from "react-bootstrap-icons";
 import { safeCredentials, handleErrors } from "./utils/fetchHelper";
 import Sticky from "react-stickynode";
@@ -27,13 +29,13 @@ const Profile = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [tweetLoading, setTweetLoading] = useState(true);
   const [username, setUsername] = useState("");
-  const [tweetBody, setTweetBody] = useState("");
-  const [tweetId, setTweetId] = useState("");
-  const [image, setImage] = useState("");
+  const [profileName, setProfileName] = useState(
+    `${window.location.pathname.replace("/feed/", "")}`
+  );
 
-  const getTweets = () => {
+  const getProfileTweets = () => {
     fetch(
-      `/api/tweets`,
+      `/api/users/${profileName}/tweets`,
       safeCredentials({
         method: "GET",
       })
@@ -59,27 +61,6 @@ const Profile = (props) => {
         setAuthenticated(res.authenticated);
         setUsername(res.username);
         setIsLoading(false);
-      });
-  };
-
-  const newTweet = (e) => {
-    e.preventDefault();
-    fetch(
-      `/api/tweets`,
-      safeCredentials({
-        method: "POST",
-        body: JSON.stringify({
-          tweet: {
-            message: tweetBody,
-          },
-        }),
-      })
-    )
-      .then(handleErrors)
-      .then((res) => {
-        console.log(res);
-        getTweets();
-        setTweetBody("");
       });
   };
 
@@ -110,14 +91,15 @@ const Profile = (props) => {
       .then(handleErrors)
       .then((res) => {
         console.log(res);
-        getTweets();
+        getProfileTweets();
       });
   };
 
   //authenticate user and get tweets on component mount
   useEffect(() => {
     authenticate();
-    getTweets();
+    //setProfileName(window.location.pathname.replace("/feed/", ""));
+    getProfileTweets();
   }, []);
 
   if (isLoading === false) {
@@ -182,14 +164,21 @@ const Profile = (props) => {
 
             <div className="col-6 mx-2">
               <div className="row border-bottom border-top border-start border-end">
-                <div className="col-11">
-                  <h5 className="mt-2">Home</h5>
+                <div className="col-1">
+                  <a href="/feed" className="text-black">
+                    <ChevronLeft size={25} className="mt-2" />
+                  </a>
+                </div>
+                <div className="col-10">
+                  <h5 className="mt-2">
+                    Profile - <span className="text-muted">@{profileName}</span>
+                  </h5>
                 </div>
                 <div className="col-1">
                   <Stars size={18} className="mt-2" />
                 </div>
               </div>
-              <form onSubmit={newTweet}>
+              <form>
                 <div className="row border-bottom border-start border-end tweet-row">
                   <div className="col-2 align-items-center">
                     <Person size={40} className="ms-4 mt-3" />
@@ -197,43 +186,24 @@ const Profile = (props) => {
                   <div className="col-10">
                     <p className="pt-2">
                       <a
-                        href={`/feed/${username}`}
+                        href={`/feed/${profileName}`}
                         className="text-black me-1 feed-links"
                       >
-                        <b>{username}</b>
+                        <b>{profileName}</b>
                       </a>
                       <a
-                        href={`/feed/${username}`}
+                        href={`/feed/${profileName}`}
                         className="text-muted feed-links"
                       >
-                        @{username}
+                        @{profileName}
                       </a>
                     </p>
-                    <input
-                      type="text"
-                      className="tweet-input"
-                      placeholder="What's happening?"
-                      maxLength="140"
-                      onChange={(event) => setTweetBody(event.target.value)}
-                      value={tweetBody}
-                    />
-                    <hr />
-                    <div className="row">
-                      <div className="col-10">
-                        <a href="" className="twitter-link">
-                          <Image size={25} className="ms-2 my-3" />
-                        </a>
-                      </div>
-                      <div className="col-2">
-                        <button
-                          className="btn btn-primary btn-tweet
-                  my-2 me-1"
-                          type="submit"
-                        >
-                          Tweet
-                        </button>
-                      </div>
-                    </div>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Quam omnis similique natus, id maxime veniam, quasi,
+                      debitis in commodi dicta enim nisi rem perferendis.
+                      Facere, laboriosam iure? Perferendis, consectetur labore.
+                    </p>
                   </div>
                 </div>
               </form>
