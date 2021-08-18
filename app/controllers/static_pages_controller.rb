@@ -14,4 +14,8 @@ class StaticPagesController < ApplicationController
   def feed
     render 'feed'
   end
+
+  def profile
+    render 'profile'
+  end
 end

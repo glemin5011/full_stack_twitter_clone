@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   get '/feed' => 'static_pages#feed'
+  get '/feed/:username' => 'static_pages#profile'
   get '/signin' => 'static_pages#signin'
   get '/signup' => 'static_pages#signup'
   get '*path' => 'static_pages#home'

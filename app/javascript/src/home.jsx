@@ -12,7 +12,7 @@ const Home = (props) => {
         <div className="col-12 col-lg-6 my-auto">
           <div className="col-10 mx-auto">
             <div className="row col-10 mx-auto">
-              <a href="http://localhost:3000/">
+              <a href="/">
                 <Twitter className="me-lg-5 mx-auto twitter-logo" size={30} />
               </a>
               <h3 className="my-2">
@@ -21,7 +21,7 @@ const Home = (props) => {
               <p className="fs-6 my-2 pb-2">Join Twitter today.</p>
 
               <a
-                href="http://localhost:3000/signup"
+                href="/signup"
                 target="_self"
                 className="btn btn-primary btn-signup"
               >
@@ -30,7 +30,7 @@ const Home = (props) => {
             </div>
             <div className="row col-10 mx-auto my-2">
               <a
-                href="http://localhost:3000/signin"
+                href="/signin"
                 target="_self"
                 class="btn btn-outline-primary btn-login"
               >

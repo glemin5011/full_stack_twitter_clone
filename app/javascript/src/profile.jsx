@@ -21,7 +21,7 @@ import Sticky from "react-stickynode";
 
 import "./feed.scss";
 
-const Feed = (props) => {
+const Profile = (props) => {
   const [tweets, setTweets] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -33,7 +33,7 @@ const Feed = (props) => {
 
   const getTweets = () => {
     fetch(
-      `api/tweets`,
+      `/api/tweets`,
       safeCredentials({
         method: "GET",
       })
@@ -48,7 +48,7 @@ const Feed = (props) => {
 
   const authenticate = () => {
     fetch(
-      `api/authenticated`,
+      `/api/authenticated`,
       safeCredentials({
         method: "GET",
       })
@@ -65,7 +65,7 @@ const Feed = (props) => {
   const newTweet = (e) => {
     e.preventDefault();
     fetch(
-      `api/tweets`,
+      `/api/tweets`,
       safeCredentials({
         method: "POST",
         body: JSON.stringify({
@@ -87,7 +87,7 @@ const Feed = (props) => {
     e.preventDefault();
     console.log("you clicked log out");
     fetch(
-      `api/sessions`,
+      `/api/sessions`,
       safeCredentials({
         method: "DELETE",
       })
@@ -102,7 +102,7 @@ const Feed = (props) => {
   const deleteTweet = (id, e) => {
     e.preventDefault();
     fetch(
-      `api/tweets/${id}`,
+      `/api/tweets/${id}`,
       safeCredentials({
         method: "DELETE",
       })
@@ -128,14 +128,14 @@ const Feed = (props) => {
             <div className="col-2 mx-1">
               <div className="list-group mt-3">
                 <a
-                  href=""
+                  href="/feed"
                   className="list-group-item list-group-item-action"
                   aria-current="true"
                 >
                   <Twitter size={25} className="me-3 mb-1 twitter-logo" />
                 </a>
                 <a
-                  href=""
+                  href="/feed"
                   className="list-group-item list-group-item-action"
                   aria-current="true"
                 >
@@ -254,13 +254,13 @@ const Feed = (props) => {
                           <div className="row">
                             <div className="col-10">
                               <a
-                                href={`/feed/${tweet.username}`}
+                                href={tweet.username}
                                 className="text-black me-1 feed-links"
                               >
                                 <b>{tweet.username}</b>
                               </a>
                               <a
-                                href={`/feed/${tweet.username}`}
+                                href={tweet.username}
                                 className="text-muted feed-links"
                               >
                                 @{tweet.username}
@@ -437,7 +437,7 @@ const Feed = (props) => {
 
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
-    <Feed />,
+    <Profile />,
     document.body.appendChild(document.createElement("div"))
   );
 });

@@ -13,6 +13,7 @@
     "react": "^17.0.2",
     "react-bootstrap-icons": "^1.5.0",
     "react-dom": "^17.0.2",
+    "react-stickynode": "^4.0.0",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12",
     "yarn": "^1.22.11"
